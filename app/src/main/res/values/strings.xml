@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Olivia_Fabian</string>
     <string name="sallealista">Sallealista</string>
+    <string name="logintitle">Log In</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="enter">Enter</string>
+    <string name="register"><u>Register here</u></string>
 </resources>
