@@ -10,16 +10,15 @@ public class WelcomeScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.welcomescreen);
+        setContentView(R.layout.activity_welcome);
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {
-                Intent intent = new Intent(this, Login.class);
-                startActivity(intent);
-                finish();
             }
         }, 2000);
-
+        Intent intent = new Intent(this, Login.class);
+        startActivity(intent);
+        finish();
     }
 }

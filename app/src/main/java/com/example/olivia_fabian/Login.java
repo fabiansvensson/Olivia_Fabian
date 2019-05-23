@@ -1,6 +1,5 @@
 package com.example.olivia_fabian;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -19,7 +18,7 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.);
+        setContentView(R.layout.activity_login);
 
         enter = findViewById(R.id.enter);
         password = findViewById(R.id.loginpassword);
