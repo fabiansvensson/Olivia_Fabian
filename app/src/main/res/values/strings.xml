@@ -5,5 +5,5 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="enter">Enter</string>
-    <string name="register"><u>Register here</u></string>
+    <string name="register"><u>Or sign up</u></string>
 </resources>
