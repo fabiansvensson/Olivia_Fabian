@@ -88,10 +88,10 @@ public class Login extends AppCompatActivity {
 
     public void intentCreate(boolean login) {
         if(login) {
-            /*Intent intent = new Intent(this, MainMenu.class);
+            Intent intent = new Intent(this, FlatsScreen.class);
             startActivity(intent);
             finish();
-            */
+
         } else {
             Intent intent = new Intent(this, Register.class);
             startActivity(intent);

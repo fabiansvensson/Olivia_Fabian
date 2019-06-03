@@ -21,8 +21,8 @@ public class FlatsAdapter extends ArrayAdapter<Flat> {
     private final FlatsScreen main;
 
     public FlatsAdapter(Context context, List<Flat> collection, FlatsScreen main) {
-        super(context, R.layout.activity_flats, collection);
-        this.layout= R.layout.activity_flats;
+        super(context, R.layout.flats, collection);
+        this.layout= R.layout.flats;
         this.main = main;
     }
 
@@ -32,7 +32,7 @@ public class FlatsAdapter extends ArrayAdapter<Flat> {
         View row =null;
 
         LayoutInflater inflater = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        row = inflater.inflate(this.layout, parent, false);
+        row = inflater.inflate(layout, parent, false);
 
         //1. Get the flat that I want to render
         flat = getItem(position);
@@ -40,19 +40,24 @@ public class FlatsAdapter extends ArrayAdapter<Flat> {
 
             final TextView f_description = (TextView) row.findViewById(R.id.description);
             f_description.setText(flat.getDescription());
+            f_description.setText("Hola a todos soy la descripcion");
+
 
             ImageView f_logo = (ImageView) row.findViewById(R.id.flatpicture);
             f_logo.setBackgroundResource(flat.getImg());
+            f_logo.setBackgroundResource(R.drawable.logo);
 
             ImageView f_like = (ImageView) row.findViewById(R.id.likeicon);
             f_like.setBackgroundResource(flat.getLike());
 
+
             TextView f_size = (TextView) row.findViewById(R.id.size);
             f_size.setText(flat.getSize());
+            f_size.setText("123");
 
             TextView f_price = (TextView) row.findViewById(R.id.price);
             f_price.setText(String.valueOf(flat.getPrice()));
-
+            f_price.setText(String.valueOf(124));
 
         }
         return row;

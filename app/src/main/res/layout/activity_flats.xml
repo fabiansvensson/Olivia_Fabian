@@ -36,22 +36,26 @@
                 android:text="@string/flats"
                 android:layout_height="wrap_content" />
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:text="@string/ebutton"
-                android:layout_toRightOf="@id/flatsCreation"
-                android:id="@+id/button_f"/>
+                android:text="@string/fbutton"
+                android:layout_alignParentRight="true"
+                android:id="@+id/button_f"
+                />
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:text="@string/cbutton"
-                android:layout_toRightOf="@id/button_f"
+                android:layout_toLeftOf="@id/button_f"
                 android:id="@+id/button_c"/>
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:text="@string/ebutton"
-                android:layout_toRightOf="@id/button_c"/>
+                android:layout_toLeftOf="@id/button_c"
+                android:id="@+id/button_e"/>
+
+
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 
@@ -59,6 +63,7 @@
         android:id="@+id/listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/my_toolbar"
         >
     </ListView>
 

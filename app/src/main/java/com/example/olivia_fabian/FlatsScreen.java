@@ -21,6 +21,11 @@ public class FlatsScreen extends AppCompatActivity {
         List<Flat> deviceCollection = new ArrayList<>();
 
 
+        deviceCollection.add(new Flat(100, "Samsung", 1, R.drawable.ic_launcher_foreground, R.drawable.like));
+        deviceCollection.add(new Flat(150, "Hyundai", 2, R.drawable.ic_launcher_foreground, R.drawable.like));
+        deviceCollection.add(new Flat(751, "iPhone", 3, R.drawable.ic_launcher_foreground, R.drawable.like));
+        deviceCollection.add(new Flat(200, "Erikson", 4, R.drawable.ic_launcher_foreground, R.drawable.like));
+
         FlatsAdapter adapter = new FlatsAdapter(getApplicationContext(), deviceCollection, this);
 
         lv = (ListView) findViewById(R.id.listview);

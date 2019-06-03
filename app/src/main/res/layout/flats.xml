@@ -3,36 +3,43 @@
 <RelativeLayout android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_below="@id/my_toolbar"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
 
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/logo"
             android:id="@+id/flatpicture"
+            android:paddingTop="15dp"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/description"
             android:layout_toRightOf="@id/flatpicture"
-            android:id="@+id/description"/>
+            android:id="@+id/description"
+            android:paddingTop="15dp"
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/s100m2"
             android:id="@+id/size"
             android:layout_alignParentRight="true"
+            android:paddingRight="15dp"
+            android:paddingTop="15dp"
+
             />
+
         <ImageView
-            android:layout_marginTop="@android:dimen/app_icon_size"
+            android:id="@+id/likeicon"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/like"
-            android:id="@+id/likeicon"
             android:layout_below="@id/description"
+            android:layout_marginTop="26dp"
             android:layout_toRightOf="@id/flatpicture"
-            />
+            android:src="@drawable/like" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,6 +47,8 @@
             android:id="@+id/price"
             android:layout_below="@id/flatpicture"
             android:layout_alignParentRight="true"
+            android:paddingRight="15dp"
+
             />
 
     </RelativeLayout>
