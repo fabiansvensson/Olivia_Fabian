@@ -1,5 +1,6 @@
 package com.example.olivia_fabian;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -96,18 +97,41 @@ public class Login extends AppCompatActivity {
     public void dialogPassword() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Login.this);
         alertDialogBuilder.setTitle("Password Incorrect");
-        alertDialogBuilder.setMessage("Error password min 6 chars and\n" +
-                "Error email needs to be set").setCancelable(false);
-        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialogBuilder.setMessage("Error password field cannot be empty").setCancelable(true);
+        final AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
+        alertDialogBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which){
+                alertDialog.hide();
+            }
+        });
+        alertDialogBuilder.setNegativeButton("Close", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which){
+                alertDialog.hide();
+            }
+        });
     }
 
     public void dialogEmail() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Login.this);
         alertDialogBuilder.setTitle("Email Incorrect");
-        alertDialogBuilder.setMessage("Error email needs to be set").setCancelable(false);
-        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialogBuilder.setMessage("Error email needs to be set").setCancelable(true);
+        final AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
+        alertDialogBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which){
+                alertDialog.hide();
+            }
+        });
+        alertDialogBuilder.setNegativeButton("Close", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which){
+                alertDialog.hide();
+            }
+        });
     }
 
 
