@@ -119,7 +119,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/enter"
+        android:id="@+id/createbutton"
         android:layout_width="380dp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
