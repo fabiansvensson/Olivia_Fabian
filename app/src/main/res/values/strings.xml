@@ -6,4 +6,12 @@
     <string name="password">Password</string>
     <string name="enter">Enter</string>
     <string name="register"><u>Or sign up</u></string>
+    <string name="createuser"><u>Create User</u></string>
+    <string name="nombredelinmueble"><u>Nombre del Inmueble</u></string>
+    <string name="create"><u>Create</u></string>
+    <string name="flats"><u>Flats</u></string>
+    <string name="ebutton"><u>E</u></string>
+    <string name="cbutton"><u>C</u></string>
+    <string name="fbutton"><u>F</u></string>
+
 </resources>
