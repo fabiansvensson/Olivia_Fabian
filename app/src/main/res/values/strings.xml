@@ -13,5 +13,8 @@
     <string name="ebutton"><u>E</u></string>
     <string name="cbutton"><u>C</u></string>
     <string name="fbutton"><u>F</u></string>
+    <string name="description"><u>description</u></string>
+    <string name="s100m2"><u>100m2</u></string>
+    <string name="price"><u>Price</u></string>
 
 </resources>
