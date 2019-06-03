@@ -70,17 +70,4 @@
 
 
         </RelativeLayout>
-    </RelativeLayout>
-
-    <Button
-        android:id="@+id/enter"
-        android:layout_width="380dp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:layout_height="50dp"
-        android:text="@string/create"
-        android:layout_marginBottom="5dp"
-        android:background="@drawable/button_border"
-        android:textSize="20dp"/>
-
 </RelativeLayout>

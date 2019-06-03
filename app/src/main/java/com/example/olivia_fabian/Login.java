@@ -98,40 +98,41 @@ public class Login extends AppCompatActivity {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Login.this);
         alertDialogBuilder.setTitle("Password Incorrect");
         alertDialogBuilder.setMessage("Error password field cannot be empty").setCancelable(true);
-        final AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
         alertDialogBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialog, int which){
-                alertDialog.hide();
+                dialog.cancel();
             }
         });
         alertDialogBuilder.setNegativeButton("Close", new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialog, int which){
-                alertDialog.hide();
+                dialog.cancel();
             }
         });
+        final AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 
     public void dialogEmail() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Login.this);
         alertDialogBuilder.setTitle("Email Incorrect");
         alertDialogBuilder.setMessage("Error email needs to be set").setCancelable(true);
-        final AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
         alertDialogBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialog, int which){
-                alertDialog.hide();
+                dialog.cancel();
             }
         });
         alertDialogBuilder.setNegativeButton("Close", new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialog, int which){
-                alertDialog.hide();
+                dialog.cancel();
             }
         });
+        final AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+
     }
 
 
