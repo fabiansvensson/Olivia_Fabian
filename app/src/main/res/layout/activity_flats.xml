@@ -26,15 +26,32 @@
                 android:layout_gravity="center_vertical"
                 />
             <TextView
-                android:id="@+id/logintitle"
+                android:id="@+id/flatsCreation"
                 android:layout_width="wrap_content"
                 android:textColor="@color/black"
                 android:textSize="25dp"
                 android:layout_marginLeft="5dp"
                 android:layout_toRightOf="@id/logo"
                 android:layout_centerVertical="true"
-                android:text="@string/logintitle"
+                android:text="@string/flats"
                 android:layout_height="wrap_content" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ebutton"
+                android:layout_toRightOf="@id/flatsCreation"
+                android:id="@+id/button_f"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cbutton"
+                android:layout_toRightOf="@id/button_f"
+                android:id="@+id/button_c"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ebutton"
+                android:layout_toRightOf="@id/button_c"/>
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 
@@ -62,6 +79,26 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:text="@string/nombredelinmueble"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/loginname"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/rectangle_edittext"
+                android:inputType="text"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                />
+
+            <TextView
                 android:id="@+id/email"
                 android:layout_width="wrap_content"
                 android:textColor="@color/black"
@@ -74,13 +111,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/rectangle_edittext"
-                android:inputType="text"/>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
+                android:inputType="textPassword"
                 />
-
             <TextView
                 android:id="@+id/password"
                 android:layout_width="wrap_content"
@@ -90,20 +122,14 @@
                 android:layout_height="wrap_content" />
 
             <EditText
-                android:id="@+id/loginpassword"
+                android:id="@+id/password_login"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/rectangle_edittext"
                 android:inputType="textPassword"
                 />
 
-            <TextView
-                android:id="@+id/loginregister"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/register"
-                android:textColor="@color/IntenseBlue"
-                />
+
         </LinearLayout>
     </LinearLayout>
 
@@ -113,7 +139,7 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:layout_height="50dp"
-        android:text="@string/enter"
+        android:text="@string/create"
         android:layout_marginBottom="5dp"
         android:background="@drawable/button_border"
         android:textSize="20dp"/>
