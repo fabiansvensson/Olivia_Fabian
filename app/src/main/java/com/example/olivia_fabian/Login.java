@@ -16,11 +16,24 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.olivia_fabian.api.RetroFlats;
+import com.example.olivia_fabian.api.RetrofitClientInstance;
+import com.example.olivia_fabian.json.ReadJson;
+import com.example.olivia_fabian.json.User;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class Login extends AppCompatActivity {
     Button enter;
     EditText password;
     EditText email;
     TextView register;
+    User[] users = null;
+    private List<RetroFlats> flats;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,14 +49,6 @@ public class Login extends AppCompatActivity {
         Toolbar my_toolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(my_toolbar);
 
-        /*
-        android.support.v7.app.ActionBar actionbar = getSupportActionBar();
-        actionbar.setLogo(R.drawable.logo);
-        actionbar.setDisplayUseLogoEnabled(true);
-        actionbar.setDisplayUseLogoEnabled(true);
-        actionbar.setTitle("Log In");
-        */
-
         enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,6 +57,17 @@ public class Login extends AppCompatActivity {
                 } else if(!passOk()) {
                     dialogPassword();
                 } else {
+                    //ReadJson rj = new ReadJson();
+                    //users = rj.loadData(Register.getFolder().toString());
+                    makeCallToApi();
+                    for(RetroFlats rf: flats) {
+                        testToast(String.valueOf(rf.getId()));
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
                     intentCreate(true);
                 }
             }
@@ -97,13 +113,11 @@ public class Login extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
-
     }
 
     public boolean passOk() {
         String s = password.getText().toString();
-        testToast(s);
-        return s.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{6,}$");
+        return s.length() > 0;
     }
 
     public boolean checkEmail() {
@@ -152,6 +166,27 @@ public class Login extends AppCompatActivity {
         });
         final AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
+    }
+
+    public void makeCallToApi() {
+        final UserManager myapplication = (UserManager)getApplication();
+
+        RetrofitClientInstance controller = new RetrofitClientInstance();
+        controller.onStart(new Callback<List<RetroFlats>>() {
+            @Override
+            public void onResponse(Call<List<RetroFlats>> call, Response<List<RetroFlats>> response) {
+
+                myapplication.flats=response.body();
+                flats = response.body();
+
+            }
+
+            @Override
+            public void onFailure(Call<List<RetroFlats>> call, Throwable t) {
+
+            }
+        });
+
     }
 
     public void testToast(String str) {

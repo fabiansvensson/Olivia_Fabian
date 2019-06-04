@@ -1,5 +1,6 @@
 package com.example.olivia_fabian;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +18,9 @@ import android.widget.Toast;
 
 import com.example.olivia_fabian.json.WriteJsonLog;
 
+import java.io.File;
+import java.io.FileOutputStream;
+
 public class Register extends AppCompatActivity {
 
     EditText email;
@@ -26,6 +30,12 @@ public class Register extends AppCompatActivity {
     private String semail;
     private String spassword;
     private String sname;
+    private static File folder;
+
+    @Override
+    public File getFilesDir() {
+        return super.getFilesDir();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +61,9 @@ public class Register extends AppCompatActivity {
                 } else if(!checkPassword()) {
                     dialogEmail();
                 } else {
-                    new WriteJsonLog("users", sname, semail, spassword);
+                    folder = getFilesDir();
+                    WriteJsonLog wjl = new WriteJsonLog(folder, sname, semail, spassword);
+                    testToast(wjl.getTest());
                     intentCreate();
                 }
             }
@@ -67,7 +79,6 @@ public class Register extends AppCompatActivity {
 
     public boolean checkName() {
         sname = name.getText().toString();
-        testToast(sname);
         return sname.length() > 0;
     }
 
@@ -164,6 +175,9 @@ public class Register extends AppCompatActivity {
         alertDialog.show();
     }
 
+    public static File getFolder() {
+        return folder;
+    }
 
     public void testToast(String str) {
         Toast.makeText(getApplicationContext(), str, Toast.LENGTH_LONG).show();

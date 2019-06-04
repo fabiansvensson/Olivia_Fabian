@@ -23,4 +23,12 @@ public class User {
     public String getPassword() {
         return password;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof User && obj != null)
+            return (this.email.equals(((User)obj).getEmail()) && this.password.equals(((User)obj).getPassword()));
+        else
+            return false;
+    }
 }
