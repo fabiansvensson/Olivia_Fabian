@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/lightGrey"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/logo"
+                android:layout_gravity="center_vertical"
+                />
+            <TextView
+                android:id="@+id/flatsCreation"
+                android:layout_width="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/logo"
+                android:layout_centerVertical="true"
+                android:text="@string/details"
+                android:layout_height="wrap_content" />
+
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/shortdescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/shortdescription"
+        android:layout_below="@id/my_toolbar"
+        android:paddingTop="30dp"
+        android:paddingLeft="15dp"
+        />
+    <ImageView
+        android:id="@+id/logoflat2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo"
+        android:adjustViewBounds="true"
+        android:maxWidth="100dp"
+        android:paddingTop="15dp"
+        android:layout_below="@id/shortdescription"
+        android:paddingLeft="15dp"
+        />
+    <ImageView
+        android:id="@+id/likedescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/like"
+        android:adjustViewBounds="true"
+        android:maxWidth="50dp"
+        android:layout_alignParentRight="true"
+        android:paddingTop="15dp"
+        android:paddingLeft="15dp"
+        android:layout_below="@id/my_toolbar"
+        />
+    <TextView
+        android:id="@+id/sizedetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/size"
+        android:layout_below="@id/shortdescription"
+        android:layout_toRightOf="@id/logoflat2"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        />
+    <TextView
+        android:id="@+id/sizenumberdetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/size"
+        android:layout_below="@id/shortdescription"
+        android:layout_toRightOf="@id/sizedetails"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        />
+    <TextView
+        android:id="@+id/prizedetails2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/price"
+        android:layout_below="@id/sizenumberdetails"
+        android:layout_toRightOf="@id/logoflat2"
+        android:paddingTop="30dp"
+        android:paddingLeft="15dp"
+        />
+    <TextView
+        android:id="@+id/longdescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/longdescription"
+        android:layout_below="@id/logoflat2"
+        android:paddingTop="30dp"
+        android:paddingLeft="35dp"
+        />
+
+    <Button
+        android:id="@+id/askappointment"
+        android:layout_width="380dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="50dp"
+        android:text="@string/askappointment"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/button_border"
+        android:textSize="20dp"
+        android:layout_alignParentBottom="true"
+        />
+
+    <Button
+        android:id="@+id/setfavourite"
+        android:layout_width="380dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="50dp"
+        android:text="@string/setasfavourite"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/button_border"
+        android:textSize="20dp"
+        android:layout_above="@id/askappointment"/>
+
+
+    <TextView
+        android:id="@+id/appointment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/setfavourite"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:layout_centerInParent="true"
+        />
+
+
+
+</RelativeLayout>

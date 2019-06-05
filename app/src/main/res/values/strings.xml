@@ -16,5 +16,20 @@
     <string name="description"><u>description</u></string>
     <string name="s100m2"><u>100m2</u></string>
     <string name="price"><u>Price</u></string>
+    <string name="details"><u>Details</u></string>
+    <string name="shortdescription"><u>Short Description</u></string>
+    <string name="size"><u>Size:</u></string>
+    <string name="longdescription"><u>Long Description</u></string>
+    <string name="setasfavourite"><u>Set as favourite</u></string>
+    <string name="askappointment"><u>Ask appointment</u></string>
+    <string name="removeasfavourite"><u>Remove as favourite</u></string>
+    <string name="askappointmentmessage"><u>Please, select the date of the appointment.</u></string>
+    <string name="date"><u>Date</u></string>
+    <string name="hour"><u>Hour</u></string>
+    <string name="select"><u>Select</u></string>
+    <string name="titlulo_pickers">Obtener fecha y hora</string>
+    <string name="formato_fecha">dd/mm/yyyy</string>
+    <string name="formato_hora">hh:mm</string>
+
 
 </resources>

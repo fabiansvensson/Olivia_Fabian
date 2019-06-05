@@ -12,6 +12,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
+
+import java.util.LinkedList;
 import java.util.List;
 
 public class FlatsAdapter extends ArrayAdapter<Flat> {
@@ -19,6 +23,7 @@ public class FlatsAdapter extends ArrayAdapter<Flat> {
     Button button;
     private Flat flat;
     private final FlatsScreen main;
+    LinkedList<Flat> flats;
 
     public FlatsAdapter(Context context, List<Flat> collection, FlatsScreen main) {
         super(context, R.layout.flats, collection);
@@ -44,8 +49,11 @@ public class FlatsAdapter extends ArrayAdapter<Flat> {
 
 
             ImageView f_logo = (ImageView) row.findViewById(R.id.flatpicture);
-            f_logo.setBackgroundResource(flat.getImg());
-            f_logo.setBackgroundResource(R.drawable.logo);
+
+            Picasso.get()
+                    .load("https://img3.idealista.com/blur/WEB_DETAIL_TOP-XL-L/0/id.pro.es.image.master/27/a3/e4/275711097.jpg")
+                    .into(f_logo);
+
 
             ImageView f_like = (ImageView) row.findViewById(R.id.likeicon);
             f_like.setBackgroundResource(flat.getLike());
