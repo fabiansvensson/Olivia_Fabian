@@ -9,4 +9,5 @@ import java.util.List;
 
 public class UserManager extends Application {
     public List<RetroFlats> flats;
+
 }

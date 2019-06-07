@@ -7,6 +7,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -33,7 +34,6 @@ public class Login extends AppCompatActivity {
     EditText email;
     TextView register;
     User[] users = null;
-    private List<RetroFlats> flats;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,14 +59,10 @@ public class Login extends AppCompatActivity {
                 } else {
                     //ReadJson rj = new ReadJson();
                     //users = rj.loadData(Register.getFolder().toString());
-                    makeCallToApi();
-                    for(RetroFlats rf: flats) {
-                        testToast(String.valueOf(rf.getId()));
-                        try {
-                            Thread.sleep(1000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
                     intentCreate(true);
                 }
@@ -166,27 +162,6 @@ public class Login extends AppCompatActivity {
         });
         final AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
-    }
-
-    public void makeCallToApi() {
-        final UserManager myapplication = (UserManager)getApplication();
-
-        RetrofitClientInstance controller = new RetrofitClientInstance();
-        controller.onStart(new Callback<List<RetroFlats>>() {
-            @Override
-            public void onResponse(Call<List<RetroFlats>> call, Response<List<RetroFlats>> response) {
-
-                myapplication.flats=response.body();
-                flats = response.body();
-
-            }
-
-            @Override
-            public void onFailure(Call<List<RetroFlats>> call, Throwable t) {
-
-            }
-        });
-
     }
 
     public void testToast(String str) {
