@@ -33,7 +33,8 @@ public class Login extends AppCompatActivity {
     EditText password;
     EditText email;
     TextView register;
-    User[] users = null;
+    List<User> users = null;
+    private User checkUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,19 +53,26 @@ public class Login extends AppCompatActivity {
         enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(email.getText().toString().equals("test")) {
+                    checkUser = new User("tester", "fabian.sitges@gmail.com", password.getText().toString());
+                } else {
+                    checkUser = new User("tester", email.getText().toString(), password.getText().toString());
+                }
+
                 if(!checkEmail()) {
                     dialogEmail();
                 } else if(!passOk()) {
                     dialogPassword();
                 } else {
-                    //ReadJson rj = new ReadJson();
-                    //users = rj.loadData(Register.getFolder().toString());
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+                    ReadJson rj = new ReadJson();
+                    users = rj.loadData(getFilesDir().toString());
+                    Log.d("TAG", "MESSAGE HAS BEEN SENT LOOK HERE!");
+                    for(User u : users) {
+                        Log.d("TAG", u.getUsername());
+                        if(u.equals(checkUser)) {
+                            intentCreate(true);
+                        }
                     }
-                    intentCreate(true);
                 }
             }
         });
@@ -103,7 +111,6 @@ public class Login extends AppCompatActivity {
             Intent intent = new Intent(this, FlatsScreen.class);
             startActivity(intent);
             finish();
-
         } else {
             Intent intent = new Intent(this, Register.class);
             startActivity(intent);
@@ -112,12 +119,11 @@ public class Login extends AppCompatActivity {
     }
 
     public boolean passOk() {
-        String s = password.getText().toString();
-        return s.length() > 0;
+        return checkUser.getPassword().length() > 0;
     }
 
     public boolean checkEmail() {
-        String s = email.getText().toString();
+        String s = checkUser.getEmail();
         if(s.equals("test")) s = "fabian.sitges@gmail.com";
         return (!TextUtils.isEmpty(s) && Patterns.EMAIL_ADDRESS.matcher(s).matches());
     }

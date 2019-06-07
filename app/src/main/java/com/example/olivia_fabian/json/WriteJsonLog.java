@@ -9,18 +9,27 @@ import com.google.gson.Gson;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 public class WriteJsonLog {
 
     private String checkDir = null;
+    private List<User> users;
 
-    public WriteJsonLog(File folder, String username, String email, String password) {
+    public WriteJsonLog() {
+        users = new ArrayList<>();
+        ReadJson rj = new ReadJson();
+        users = rj.loadData(Register.getFolder().toString());
+    }
+
+    public void writeJSON(File folder, String username, String email, String password) {
         Gson gson = new Gson();
-        User gi = new User(username, email, password);
-        String jsonString = gson.toJson(gi);
+        users.add(new User(username, email, password));
+        String jsonString = gson.toJson(users);
         try {
-            System.out.println("Hello");
             if(!folder.exists()) {
                 if(!folder.mkdir()){
                     checkDir = "can't be created";
@@ -37,10 +46,6 @@ public class WriteJsonLog {
         } catch(IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public String getTest(){
-        return checkDir;
     }
 
 }

@@ -62,8 +62,8 @@ public class Register extends AppCompatActivity {
                     dialogEmail();
                 } else {
                     folder = getFilesDir();
-                    WriteJsonLog wjl = new WriteJsonLog(folder, sname, semail, spassword);
-                    testToast(wjl.getTest());
+                    WriteJsonLog wjl = new WriteJsonLog();
+                    wjl.writeJSON(folder, sname, semail, spassword);
                     intentCreate();
                 }
             }
