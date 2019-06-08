@@ -14,7 +14,7 @@ import com.example.olivia_fabian.api.RetroFlats;
 import com.example.olivia_fabian.api.RetrofitClientInstance;
 
 
-//import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
