@@ -51,9 +51,9 @@ public class FlatsAdapter extends ArrayAdapter<Flat> {
 
 
             ImageView f_logo = (ImageView) row.findViewById(R.id.flatpicture);
-            if(flat.getLike()) {
-                ImageView f_favourtite = (ImageView) row.findViewById(R.id.likeicon);
-            }
+            //if(flat.getLike() != null) {
+              //  ImageView f_favourtite = (ImageView) row.findViewById(R.id.likeicon);
+            ///}
 
             Picasso.get()
                     .load("https://img3.idealista.com/blur/WEB_DETAIL_TOP-XL-L/0/id.pro.es.image.master/27/a3/e4/275711097.jpg")
@@ -72,7 +72,7 @@ public class FlatsAdapter extends ArrayAdapter<Flat> {
             rowe.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    intentCreate();
+                   // intentCreate();
                 }
             });
 

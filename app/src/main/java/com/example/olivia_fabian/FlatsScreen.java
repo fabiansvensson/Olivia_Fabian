@@ -24,6 +24,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+//import com.squareup.picasso.Picasso;
+
 public class FlatsScreen extends AppCompatActivity {
     ListView lv;
     Object item;
@@ -43,7 +45,7 @@ public class FlatsScreen extends AppCompatActivity {
 
         makeCallToApi();
 
-        List<Flat> deviceCollection = new ArrayList<>();
+        deviceCollection = new ArrayList<>();
         activityMain = findViewById(R.id.flatpicture);
 
 
@@ -82,6 +84,7 @@ public class FlatsScreen extends AppCompatActivity {
                 for(RetroFlats rf : flats) {
                     Log.d("TAG", rf.getShortdescription());
                 }
+                //codi dels flats
             }
 
             @Override

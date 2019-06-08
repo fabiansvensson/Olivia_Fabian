@@ -27,6 +27,7 @@ public class WriteJsonLog {
 
     public void writeJSON(File folder, String username, String email, String password) {
         Gson gson = new Gson();
+        if(users == null) users = new ArrayList<>();
         users.add(new User(username, email, password));
         String jsonString = gson.toJson(users);
         try {
