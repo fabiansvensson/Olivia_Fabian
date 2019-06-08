@@ -2,6 +2,7 @@ package com.example.olivia_fabian;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -49,10 +50,10 @@ public class FlatsScreen extends AppCompatActivity {
         activityMain = findViewById(R.id.flatpicture);
 
 
-        deviceCollection.add(new Flat(100, "Samsung", 1, R.drawable.ic_launcher_foreground, R.drawable.like));
-        deviceCollection.add(new Flat(150, "Hyundai", 2, R.drawable.ic_launcher_foreground, R.drawable.like));
-        deviceCollection.add(new Flat(751, "iPhone", 3, R.drawable.ic_launcher_foreground, R.drawable.like));
-        deviceCollection.add(new Flat(200, "Erikson", 4, R.drawable.ic_launcher_foreground, R.drawable.like));
+        deviceCollection.add(new Flat(100, "", 1, R.drawable.ic_launcher_foreground, R.drawable.like));
+        deviceCollection.add(new Flat(150, "", 2, R.drawable.ic_launcher_foreground, R.drawable.like));
+        deviceCollection.add(new Flat(751, "", 3, R.drawable.ic_launcher_foreground, R.drawable.like));
+        deviceCollection.add(new Flat(200, "", 4, R.drawable.ic_launcher_foreground, R.drawable.like));
 
         FlatsAdapter adapter = new FlatsAdapter(getApplicationContext(), deviceCollection, this);
 
@@ -61,13 +62,23 @@ public class FlatsScreen extends AppCompatActivity {
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 item = lv.getItemAtPosition(position);
+                createIntent((Flat)item);
             }
         });
 
+    }
+
+    public void createIntent(Flat flat) {
+        Intent intent = new Intent(this, Details.class);
+        intent.putExtra("PRICE", flat.getPrice());
+        intent.putExtra("DESCRIPTION", flat.getDescription());
+        intent.putExtra("IMAGE", flat.getImg());
+        intent.putExtra("LIKE", flat.getLike());
+        intent.putExtra("SIZE", flat.getSize());
+        startActivity(intent);
     }
 
     public void makeCallToApi() {

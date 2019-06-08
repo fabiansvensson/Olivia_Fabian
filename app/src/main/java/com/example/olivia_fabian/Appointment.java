@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 
-public class Details extends AppCompatActivity {
+public class Appointment extends AppCompatActivity {
 
     @SuppressLint("WrongViewCast")
     @Override
