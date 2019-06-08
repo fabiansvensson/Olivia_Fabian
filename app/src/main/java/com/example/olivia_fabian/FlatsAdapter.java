@@ -1,6 +1,7 @@
 package com.example.olivia_fabian;
 
 import android.bluetooth.BluetoothClass;
+import android.content.Intent;
 import android.widget.ArrayAdapter;
 import android.content.Context;
 import android.graphics.Color;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,14 +51,13 @@ public class FlatsAdapter extends ArrayAdapter<Flat> {
 
 
             ImageView f_logo = (ImageView) row.findViewById(R.id.flatpicture);
+            if(flat.getLike()) {
+                ImageView f_favourtite = (ImageView) row.findViewById(R.id.likeicon);
+            }
 
             Picasso.get()
                     .load("https://img3.idealista.com/blur/WEB_DETAIL_TOP-XL-L/0/id.pro.es.image.master/27/a3/e4/275711097.jpg")
                     .into(f_logo);
-
-
-            ImageView f_like = (ImageView) row.findViewById(R.id.likeicon);
-            f_like.setBackgroundResource(flat.getLike());
 
 
             TextView f_size = (TextView) row.findViewById(R.id.size);
@@ -66,9 +67,18 @@ public class FlatsAdapter extends ArrayAdapter<Flat> {
             TextView f_price = (TextView) row.findViewById(R.id.price);
             f_price.setText(String.valueOf(flat.getPrice()));
             f_price.setText(String.valueOf(124));
+            ImageView rowe = (ImageView) row.findViewById(R.id.row);
+
+            rowe.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    intentCreate();
+                }
+            });
 
         }
         return row;
     }
+
 
 }

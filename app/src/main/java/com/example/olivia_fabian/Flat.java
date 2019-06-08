@@ -5,9 +5,9 @@ public class Flat {
     private String description;
     private int size;
     private int img;
-    private int like;
+    private boolean like;
 
-    public Flat(float price, String description, int size, int img, int like) {
+    public Flat(float price, String description, int size, int img, boolean like) {
         this.price = price;
         this.description = description;
         this.size = size;
@@ -47,11 +47,11 @@ public class Flat {
         this.img = img_path;
     }
 
-    public int getLike() {
+    public boolean getLike() {
         return like;
     }
 
-    public void setLike(int like) {
+    public void setLike(boolean like) {
         this.like = like;
     }
 }

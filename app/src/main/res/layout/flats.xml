@@ -49,6 +49,20 @@
             android:paddingRight="15dp"
 
             />
+        <ImageView
+            android:id="@+id/calendarflat"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@id/description"
+            android:layout_marginTop="26dp"
+            android:layout_toRightOf="@id/likeicon"
+            android:src="@drawable/cal">
+        </ImageView>
 
+        <ImageView
+            android:id="@+id/row"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
     </RelativeLayout>
 

@@ -111,6 +111,7 @@ public class Login extends AppCompatActivity {
             Intent intent = new Intent(this, FlatsScreen.class);
             startActivity(intent);
             finish();
+
         } else {
             Intent intent = new Intent(this, Register.class);
             startActivity(intent);

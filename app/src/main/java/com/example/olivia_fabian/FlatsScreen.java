@@ -37,8 +37,9 @@ public class FlatsScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flats);
         Context context = getApplicationContext();
-        ImageView imageView , aux;
+        ImageView imageView, aux;
         int id = 1;
+        List<Flat> deviceCollection = new ArrayList<>();//aqui ens ho hem de descarregar tot de la api i posarho
 
         makeCallToApi();
 
