@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.olivia_fabian.api.RetroFlats;
 import com.example.olivia_fabian.api.RetrofitClientInstance;
@@ -50,10 +51,10 @@ public class FlatsScreen extends AppCompatActivity {
         activityMain = findViewById(R.id.flatpicture);
 
 
-        deviceCollection.add(new Flat(100, "", 1, R.drawable.ic_launcher_foreground, R.drawable.like));
-        deviceCollection.add(new Flat(150, "", 2, R.drawable.ic_launcher_foreground, R.drawable.like));
-        deviceCollection.add(new Flat(751, "", 3, R.drawable.ic_launcher_foreground, R.drawable.like));
-        deviceCollection.add(new Flat(200, "", 4, R.drawable.ic_launcher_foreground, R.drawable.like));
+        deviceCollection.add(new Flat(100, "hejhopp1", 1, R.drawable.ic_launcher_foreground, R.drawable.like));
+        deviceCollection.add(new Flat(150, "hejhopp2", 2, R.drawable.ic_launcher_foreground, R.drawable.like));
+        deviceCollection.add(new Flat(751, "hejhopp3", 3, R.drawable.ic_launcher_foreground, R.drawable.like));
+        deviceCollection.add(new Flat(200, "hejhopp4", 4, R.drawable.ic_launcher_foreground, R.drawable.like));
 
         FlatsAdapter adapter = new FlatsAdapter(getApplicationContext(), deviceCollection, this);
 
@@ -78,6 +79,7 @@ public class FlatsScreen extends AppCompatActivity {
         intent.putExtra("IMAGE", flat.getImg());
         intent.putExtra("LIKE", flat.getLike());
         intent.putExtra("SIZE", flat.getSize());
+
         startActivity(intent);
     }
 

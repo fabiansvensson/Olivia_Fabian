@@ -69,15 +69,8 @@ public class FlatsAdapter extends ArrayAdapter<Flat> {
             f_price.setText(String.valueOf(124));
             ImageView rowe = (ImageView) row.findViewById(R.id.row);
 
-            row.setOnClickListener(new View.OnClickListener() {
-               public void onClick(View view) {
-
-               }
-            });
-
         }
         return row;
     }
-
 
 }

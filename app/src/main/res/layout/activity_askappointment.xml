@@ -64,7 +64,7 @@
             />
         <EditText
             android:id="@+id/et_mostrar_fecha_picker"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="date"
@@ -82,17 +82,20 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/et_mostrar_fecha_picker"
             android:paddingTop="30dp"/>
-        <EditText
-            android:id="@+id/et_mostrar_hora_picker"
-            android:layout_width="wrap_content"
+
+        <Spinner
+            android:id="@+id/spinner_time"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:ems="10"
             android:inputType="time"
             android:hint="@string/formato_hora"
-            android:layout_below="@id/hour"/>
+            android:layout_below="@id/hour"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown"/>
         <Button
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
             android:background="@drawable/cal"
             android:layout_toRightOf="@id/et_mostrar_fecha_picker"
             android:layout_below="@id/date"
@@ -100,13 +103,12 @@
         <Button
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
             android:background="@drawable/hour"
-            android:layout_toRightOf="@id/et_mostrar_hora_picker"
+            android:layout_toRightOf="@id/spinner_time"
             android:layout_below="@id/hour"
             />
     </RelativeLayout>
-
-
 
     <Button
         android:id="@+id/select"
