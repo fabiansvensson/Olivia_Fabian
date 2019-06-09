@@ -1,6 +1,7 @@
 package com.example.olivia_fabian;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -29,8 +30,7 @@ public class FlatsScreen extends AppCompatActivity {
     ImageView activityMain;
     private static List<RetroFlats> flats;
     private static List <Flat> flats_n;
-
-
+    private FlatsAdapter adapter;
 
 
     @SuppressLint("WrongViewCast")
@@ -41,7 +41,21 @@ public class FlatsScreen extends AppCompatActivity {
         setContentView(R.layout.activity_flats);
         activityMain = findViewById(R.id.flatpicture);
 
-        makeCallToApi();
+        makeCallToApi(this);
+
+        adapter = new FlatsAdapter(getApplicationContext(), flats_n, this);
+
+        lv = (ListView) findViewById(R.id.listview);
+        lv.setAdapter(adapter);
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                item = lv.getItemAtPosition(position);
+                createIntent((Flat)item);
+            }
+        });
 
     }
 
@@ -56,7 +70,7 @@ public class FlatsScreen extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void makeCallToApi() {
+    public void makeCallToApi(final Context context) {
         final UserManager myapplication = (UserManager)getApplication();
 
         RetrofitClientInstance controller = new RetrofitClientInstance();
@@ -71,24 +85,11 @@ public class FlatsScreen extends AppCompatActivity {
                     Log.d("TAG", rf.getShortdescription());
                 }
                 for (RetroFlats rf: flats) {
-                    Flat f = new Flat(rf.getPrice(), rf.getShortdescription(), rf.getMeters(), rf.getImage(), false);
+                    Flat f = new Flat(rf.getPrice(), rf.getShortdescription(), 5, R.drawable.logo, false);
                     flats_n.add(f);
                 }
+                adapter.notifyDataSetChanged();
 
-
-                FlatsAdapter adapter = new FlatsAdapter(getApplicationContext(), flats_n, this);
-
-                lv = (ListView) findViewById(R.id.listview);
-                lv.setAdapter(adapter);
-
-                lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        item = lv.getItemAtPosition(position);
-                        createIntent((Flat)item);
-                    }
-                });
             }
 
             @Override

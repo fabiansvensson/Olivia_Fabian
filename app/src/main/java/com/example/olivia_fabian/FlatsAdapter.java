@@ -29,12 +29,11 @@ public class FlatsAdapter extends ArrayAdapter<Flat> {
     private final FlatsScreen main;
     LinkedList<Flat> flats;
 
-    public FlatsAdapter(Context context, List<Flat> collection, Callback<List<RetroFlats>> main) {
+    public FlatsAdapter(Context context, List<Flat> collection, FlatsScreen main) {
         super(context, R.layout.flats, collection);
         this.layout= R.layout.flats;
         this.main = (FlatsScreen) main;
     }
-
 
     @Override
     public View getView(int position, View convertView,  ViewGroup parent) {
