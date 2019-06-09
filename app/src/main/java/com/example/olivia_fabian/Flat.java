@@ -2,18 +2,20 @@ package com.example.olivia_fabian;
 
 public class Flat {
     private float price;
-    private String description;
+    private String short_description;
     private int size;
-    private int img;
-    private int like;
+    private String img;
+    private boolean like;
 
-    public Flat(float price, String description, int size, int img, int like) {
+
+    public Flat(float price, String short_description, int size, String img, boolean like) {
         this.price = price;
-        this.description = description;
+        this.short_description = short_description;
         this.size = size;
         this.img = img;
         this.like = like;
     }
+
 
     public String getPrice() {
         return (Float.toString(price)) + "€";
@@ -24,11 +26,11 @@ public class Flat {
     }
 
     public String getDescription() {
-        return description;
+        return short_description;
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.short_description = description;
     }
 
     public String getSize() {
@@ -39,19 +41,19 @@ public class Flat {
         this.size = size;
     }
 
-    public int getImg() {
+    public String getImg() {
         return img;
     }
 
-    public void setImg(int img_path) {
+    public void setImg(String img_path) {
         this.img = img_path;
     }
 
-    public int getLike() {
+    public boolean getLike() {
         return like;
     }
 
-    public void setLike(int like) {
+    public void setLike(boolean like) {
         this.like = like;
     }
 }

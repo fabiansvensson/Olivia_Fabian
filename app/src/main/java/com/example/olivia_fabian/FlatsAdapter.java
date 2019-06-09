@@ -15,23 +15,26 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.olivia_fabian.api.RetroFlats;
 import com.squareup.picasso.Picasso;
 
 import java.util.LinkedList;
 import java.util.List;
 
+import retrofit2.Callback;
+
 public class FlatsAdapter extends ArrayAdapter<Flat> {
     int layout=-1;
-    Button button;
     private Flat flat;
     private final FlatsScreen main;
     LinkedList<Flat> flats;
 
-    public FlatsAdapter(Context context, List<Flat> collection, FlatsScreen main) {
+    public FlatsAdapter(Context context, List<Flat> collection, Callback<List<RetroFlats>> main) {
         super(context, R.layout.flats, collection);
         this.layout= R.layout.flats;
-        this.main = main;
+        this.main = (FlatsScreen) main;
     }
+
 
     @Override
     public View getView(int position, View convertView,  ViewGroup parent) {
@@ -47,26 +50,23 @@ public class FlatsAdapter extends ArrayAdapter<Flat> {
 
             final TextView f_description = (TextView) row.findViewById(R.id.description);
             f_description.setText(flat.getDescription());
-            f_description.setText("Hola a todos soy la descripcion");
 
 
             ImageView f_logo = (ImageView) row.findViewById(R.id.flatpicture);
-            //if(flat.getLike() != null) {
-              //  ImageView f_favourtite = (ImageView) row.findViewById(R.id.likeicon);
-            ///}
+           // if(flat.getLike() != false) {
+             // ImageView f_favourtite = (ImageView) row.findViewById(R.id.likeicon);
+            //}
 
             Picasso.get()
-                    .load("https://img3.idealista.com/blur/WEB_DETAIL_TOP-XL-L/0/id.pro.es.image.master/27/a3/e4/275711097.jpg")
+                    .load(flat.getImg())
                     .into(f_logo);
 
 
             TextView f_size = (TextView) row.findViewById(R.id.size);
             f_size.setText(flat.getSize());
-            f_size.setText("123");
 
             TextView f_price = (TextView) row.findViewById(R.id.price);
             f_price.setText(String.valueOf(flat.getPrice()));
-            f_price.setText(String.valueOf(124));
             ImageView rowe = (ImageView) row.findViewById(R.id.row);
 
         }
