@@ -22,13 +22,16 @@ public class Appointment extends AppCompatActivity {
 
     private Calendar myCalendar;
     private EditText et;
+    private boolean app;
+    private boolean like;
 
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_askappointment);
-
+        like = getIntent().getBooleanExtra("LIKE2", false);
+        app = getIntent().getBooleanExtra("APP", false);
         myCalendar = Calendar.getInstance();
 
         et = findViewById(R.id.tv_mostrar_fecha_picker);
@@ -78,8 +81,11 @@ public class Appointment extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.putExtra("TIME", (String)dropdown.getSelectedItem());
-                intent.putExtra("DATE", et.getText().toString());
+                intent.putExtra("DATE2", et.getText().toString());
                 setResult(RESULT_OK, intent);
+                app = true;
+                intent.putExtra("APPOINTMENT3", app);
+                intent.putExtra("LIKE", like);
                 finish();
             }
         });

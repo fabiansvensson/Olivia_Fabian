@@ -10,7 +10,8 @@ public class Flat {
     private int id;
     private String date;
     private String time;
-
+    private String long_description;
+    private boolean appointment;
 
     public String getDate() {
         return date;
@@ -28,7 +29,7 @@ public class Flat {
         this.time = time;
     }
 
-    public Flat(float price, String short_description, int size, int img, boolean like, String img_api, int id) {
+    public Flat(float price, String short_description, int size, int img, boolean like, String img_api, int id, String long_description, boolean appointment) {
         this.price = price;
         this.short_description = short_description;
         this.size = size;
@@ -38,6 +39,26 @@ public class Flat {
         this.id = id;
         this.date = null;
         this.time = null;
+        this.long_description = long_description;
+        this.appointment = appointment;
+
+    }
+
+
+    public String getLong_description() {
+        return long_description;
+    }
+
+    public void setLong_description(String long_description) {
+        this.long_description = long_description;
+    }
+
+    public boolean isAppointment() {
+        return appointment;
+    }
+
+    public void setAppointment(boolean appointment) {
+        this.appointment = appointment;
     }
 
     public int getId() {

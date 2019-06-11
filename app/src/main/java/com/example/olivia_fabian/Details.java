@@ -16,15 +16,15 @@ import com.squareup.picasso.Picasso;
 public class Details extends AppCompatActivity {
 
     private String price;
-    private String description;
-    private int image;
+    private String description, long_description;
     private String image_api;
     private boolean like;
     private String size;
     private Button appointment;
-    private String time = null;
-    private String date = null;
+    private String time;
+    private String date;
     private Button like_button;
+    private boolean appointment_b;
     private int id;
 
     @SuppressLint("WrongViewCast")
@@ -42,6 +42,8 @@ public class Details extends AppCompatActivity {
         id = intent.getIntExtra("FLAT_ID", 0);
         date = intent.getStringExtra("DATE");
         time = intent.getStringExtra("TIME");
+        long_description = intent.getStringExtra("LONG_DESCRIPTION");
+        appointment_b = intent.getBooleanExtra("APPOINTMENT", false);
 
         Log.d("PRICE", "this is the price: " + price);
         Log.d("DESCRIPTION", "this is the description: " + description);
@@ -52,6 +54,8 @@ public class Details extends AppCompatActivity {
         TextView vshortdesc = findViewById(R.id.shortdescription);
         ImageView vflat_img = findViewById(R.id.logoflat2);
 
+        TextView vlongdescription = findViewById(R.id.longdescription);
+        vlongdescription.setText(long_description);
 
         if(image_api == null || image_api.isEmpty())  {
             Picasso.get()
@@ -64,7 +68,6 @@ public class Details extends AppCompatActivity {
         }
         TextView vsize = findViewById(R.id.sizenumberdetails);
         TextView vprice = findViewById(R.id.prizedetails2);
-        TextView vlongdesc = findViewById(R.id.longdescription);
         ImageView vlike = findViewById(R.id.likedescription);
         like_button = findViewById(R.id.setfavourite);
 
@@ -85,7 +88,14 @@ public class Details extends AppCompatActivity {
         vshortdesc.setText(description);
         vsize.setText(size);
         vprice.setText(price);
-        vlongdesc.setText("We need to pass this still!");
+        appointment = findViewById(R.id.askappointment);
+
+        if(appointment_b) {
+            TextView tv = findViewById(R.id.dateandtime);
+            tv.setText("Tienes una cita el " + date + "a las " + time);
+            tv.setVisibility(View.VISIBLE);
+            appointment.setVisibility(View.INVISIBLE);
+        }
 
         like_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,7 +120,6 @@ public class Details extends AppCompatActivity {
             }
         });
 
-        appointment = findViewById(R.id.askappointment);
         appointment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -125,24 +134,30 @@ public class Details extends AppCompatActivity {
         if (requestCode == 1) {
             if(resultCode == RESULT_OK) {
                 time = data.getStringExtra("TIME");
-                date = data.getStringExtra("DATE");
+                date = data.getStringExtra("DATE2");
                 id = data.getIntExtra("ID", 0);
                 like = data.getBooleanExtra("LIKE", false);
+                appointment_b = data.getBooleanExtra("APPOINTMENT3", false);
+
                 if(like == false) {
                     like_button.setText("SET AS FAVOURITE");
-                } else{
+                } else {
                     like_button.setText("REMOVE AS FAVOURITE");
                 }
-                TextView tv = findViewById(R.id.dateandtime);
-                tv.setText("Tienes una cita el " + date + "a las " + time);
-                tv.setVisibility(View.VISIBLE);
-                appointment.setVisibility(View.INVISIBLE);
+                if(appointment_b) {
+                    TextView tv = findViewById(R.id.dateandtime);
+                    tv.setText("Tienes una cita el " + date + "a las " + time);
+                    tv.setVisibility(View.VISIBLE);
+                    appointment.setVisibility(View.INVISIBLE);
+                }
             }
         }
     }
 
     public void createIntent() {
         Intent intent = new Intent(this, Appointment.class);
+        intent.putExtra("APP", appointment_b);
+        intent.putExtra("LIKE2", like);
         startActivityForResult(intent, 1);
     }
 
@@ -153,6 +168,7 @@ public class Details extends AppCompatActivity {
         intent.putExtra("DATE", date);
         intent.putExtra("ID", id);
         intent.putExtra("LIKE", like);
+        intent.putExtra("APPOINTMENT2", appointment_b);
         setResult(RESULT_OK, intent);
         super.onBackPressed();
     }

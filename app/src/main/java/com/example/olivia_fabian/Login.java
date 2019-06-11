@@ -175,7 +175,7 @@ public class Login extends AppCompatActivity {
     public void dialogFaultyInput() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Login.this);
         alertDialogBuilder.setTitle("Incorrect password or email");
-        alertDialogBuilder.setMessage("Error! Either the password or the email that you" +
+        alertDialogBuilder.setMessage("Error! Either the password or the email that you " +
                 "have inputted do not correspond to any user!").setCancelable(true);
         alertDialogBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener(){
             @Override

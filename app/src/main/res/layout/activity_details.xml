@@ -85,7 +85,6 @@
         android:id="@+id/sizenumberdetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/size"
         android:layout_below="@id/shortdescription"
         android:layout_toRightOf="@id/sizedetails"
         android:paddingLeft="15dp"
@@ -101,15 +100,27 @@
         android:paddingTop="30dp"
         android:paddingLeft="15dp"
         />
-    <TextView
-        android:id="@+id/longdescription"
+    <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/longdescription"
         android:layout_below="@id/logoflat2"
-        android:paddingTop="30dp"
-        android:paddingLeft="35dp"
-        />
+        android:layout_above="@id/setfavourite"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:paddingRight="15dp"
+        >
+        <TextView
+            android:id="@+id/longdescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/longdescription"
+            android:layout_below="@id/logoflat2"
+            android:paddingTop="30dp"
+            android:paddingLeft="35dp"
+            android:paddingRight="25dp"
+            />
+    </ScrollView>
+
 
     <Button
         android:id="@+id/askappointment"
