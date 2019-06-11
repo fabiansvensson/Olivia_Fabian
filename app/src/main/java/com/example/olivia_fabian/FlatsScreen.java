@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.olivia_fabian.api.RetroFlats;
@@ -32,6 +33,8 @@ public class FlatsScreen extends AppCompatActivity {
     private static List<RetroFlats> flats;
     private static List <Flat> flats_n;
     private FlatsAdapter adapter;
+    private String time;
+    private String date;
 
 
     @SuppressLint("WrongViewCast")
@@ -70,7 +73,19 @@ public class FlatsScreen extends AppCompatActivity {
         intent.putExtra("IMAGE_API", flat.getImg_api());
 
 
-        startActivity(intent);
+        startActivityForResult(intent,1);
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if(resultCode == RESULT_OK) {
+                time = data.getStringExtra("TIME");
+                date = data.getStringExtra("DATE");
+                Log.d("STRING TIME", "CHECK HERE IS THE TIME IN THE FLATSCREEN: " + time);
+                Log.d("DATE TIME", "CHECK HERE IS THE DATE IN THE FLATSCREEN: " + date);
+            }
+        }
     }
 
     public void makeCallToApi(final Context context) {

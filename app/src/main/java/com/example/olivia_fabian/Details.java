@@ -22,6 +22,8 @@ public class Details extends AppCompatActivity {
     private boolean like;
     private String size;
     private Button appointment;
+    private String time;
+    private String date;
     private Button like_button;
 
     @SuppressLint("WrongViewCast")
@@ -70,6 +72,7 @@ public class Details extends AppCompatActivity {
                     .into(vlike);
         }
         vshortdesc.setText(description);
+        vflat_img.setImageResource(image);
         vsize.setText(size);
         vprice.setText(price);
         vlongdesc.setText("We need to pass this still!");
@@ -112,8 +115,8 @@ public class Details extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
             if(resultCode == RESULT_OK) {
-                String time = data.getStringExtra("TIME");
-                String date = data.getStringExtra("DATE");
+                time = data.getStringExtra("TIME");
+                date = data.getStringExtra("DATE");
                 TextView tv = findViewById(R.id.dateandtime);
                 tv.setText("Tienes una cita el " + date + "a las " + time);
                 tv.setVisibility(View.VISIBLE);
@@ -125,6 +128,15 @@ public class Details extends AppCompatActivity {
     public void createIntent() {
         Intent intent = new Intent(this, Appointment.class);
         startActivityForResult(intent, 1);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent();
+        intent.putExtra("TIME", time);
+        intent.putExtra("DATE", date);
+        setResult(RESULT_OK, intent);
+        super.onBackPressed();
     }
 
 }
