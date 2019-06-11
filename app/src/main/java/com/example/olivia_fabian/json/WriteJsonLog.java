@@ -1,16 +1,13 @@
 package com.example.olivia_fabian.json;
 
-import android.os.Environment;
-import android.widget.Toast;
-
-import com.example.olivia_fabian.Register;
+import com.example.olivia_fabian.activities.Register;
+import com.example.olivia_fabian.pojo.User;
 import com.google.gson.Gson;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 

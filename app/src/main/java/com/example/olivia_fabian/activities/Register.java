@@ -1,6 +1,5 @@
-package com.example.olivia_fabian;
+package com.example.olivia_fabian.activities;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,12 +13,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
+import com.example.olivia_fabian.R;
+import com.example.olivia_fabian.api.PostUser;
+import com.example.olivia_fabian.api.RegisterInstance;
 import com.example.olivia_fabian.json.WriteJsonLog;
 
 import java.io.File;
-import java.io.FileOutputStream;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Register extends AppCompatActivity {
 
@@ -59,16 +63,41 @@ public class Register extends AppCompatActivity {
                 } else if(!checkEmail()) {
                     dialogEmail();
                 } else if(!checkPassword()) {
-                    dialogEmail();
+                    dialogPassword();
                 } else {
                     folder = getFilesDir();
                     WriteJsonLog wjl = new WriteJsonLog();
                     wjl.writeJSON(folder, sname, semail, spassword);
+                    sendPost(sname, semail, spassword);
                     intentCreate();
                 }
             }
         });
 
+    }
+
+    public void sendPost(String name, String email, String password) {
+
+        RegisterInstance controller = new RegisterInstance();
+        controller.onStart(name, email, password, new Callback<PostUser>() {
+            @Override
+            public void onResponse(Call<PostUser> call, Response<PostUser> response) {
+                if(response.isSuccessful()){
+                    PostUser result = response.body();
+
+                    if(response.body().result){
+
+                    }else{
+                        System.out.println(response.errorBody());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PostUser> call, Throwable t) {
+
+            }
+        });
     }
 
     public void intentCreate() {
@@ -177,10 +206,6 @@ public class Register extends AppCompatActivity {
 
     public static File getFolder() {
         return folder;
-    }
-
-    public void testToast(String str) {
-        Toast.makeText(getApplicationContext(), str, Toast.LENGTH_LONG).show();
     }
 
 }

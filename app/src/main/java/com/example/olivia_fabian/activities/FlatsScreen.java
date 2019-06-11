@@ -1,4 +1,4 @@
-package com.example.olivia_fabian;
+package com.example.olivia_fabian.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -11,9 +11,12 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.olivia_fabian.Flat;
+import com.example.olivia_fabian.FlatsAdapter;
+import com.example.olivia_fabian.R;
+import com.example.olivia_fabian.UserManager;
 import com.example.olivia_fabian.api.RetroFlats;
 import com.example.olivia_fabian.api.RetrofitClientInstance;
 

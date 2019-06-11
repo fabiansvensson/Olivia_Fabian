@@ -14,17 +14,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".WelcomeScreen">
+        <activity android:name=".activities.WelcomeScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Login"></activity>
-        <activity android:name=".FlatsScreen"></activity>
-        <activity android:name=".Register"></activity>
-        <activity android:name=".Details"></activity>
-        <activity android:name=".Appointment"></activity>
+        <activity android:name=".activities.Login"></activity>
+        <activity android:name=".activities.FlatsScreen"></activity>
+        <activity android:name=".activities.Register"></activity>
+        <activity android:name=".activities.Details"></activity>
+        <activity android:name=".activities.Appointment"></activity>
     </application>
 </manifest>

@@ -1,4 +1,4 @@
-package com.example.olivia_fabian;
+package com.example.olivia_fabian.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.olivia_fabian.R;
 import com.squareup.picasso.Picasso;
 
 

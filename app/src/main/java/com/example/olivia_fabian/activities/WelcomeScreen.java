@@ -1,4 +1,4 @@
-package com.example.olivia_fabian;
+package com.example.olivia_fabian.activities;
 
 import android.content.Intent;
 import android.os.Handler;
@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
+
+import com.example.olivia_fabian.R;
 
 public class WelcomeScreen extends AppCompatActivity {
     private ProgressBar pgsBar;

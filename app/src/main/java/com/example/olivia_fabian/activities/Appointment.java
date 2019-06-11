@@ -1,4 +1,4 @@
-package com.example.olivia_fabian;
+package com.example.olivia_fabian.activities;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
@@ -11,7 +11,8 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
+
+import com.example.olivia_fabian.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

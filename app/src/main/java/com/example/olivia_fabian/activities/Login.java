@@ -1,4 +1,4 @@
-package com.example.olivia_fabian;
+package com.example.olivia_fabian.activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,12 +15,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.olivia_fabian.api.RetroFlats;
-import com.example.olivia_fabian.api.RetrofitClientInstance;
+import com.example.olivia_fabian.R;
+import com.example.olivia_fabian.api.FlatsService;
+import com.example.olivia_fabian.api.PostAPIUtils;
+import com.example.olivia_fabian.api.PostLogin;
 import com.example.olivia_fabian.json.ReadJson;
-import com.example.olivia_fabian.json.User;
+import com.example.olivia_fabian.pojo.User;
 
 import java.util.List;
 
@@ -36,6 +37,7 @@ public class Login extends AppCompatActivity {
     List<User> users = null;
     private User checkUser;
     private boolean userFound;
+    private FlatsService fs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,8 @@ public class Login extends AppCompatActivity {
 
         Toolbar my_toolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(my_toolbar);
+
+        fs = PostAPIUtils.getAPIService();
 
         enter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,14 +73,15 @@ public class Login extends AppCompatActivity {
                     Log.d("TAG", "MESSAGE HAS BEEN SENT LOOK HERE!");
                     userFound = false;
                     for(User u : users) {
-                        Log.d("TAG", u.getUsername());
                         if(u.equals(checkUser)) {
                             intentCreate(true);
                             userFound = true;
                         }
                     }
+                    sendPost(checkUser.getEmail(),checkUser.getPassword());
                     if(!userFound) {
-                        dialogFaultyInput();
+
+                        //dialogFaultyInput();
                     }
                 }
             }
@@ -91,6 +96,24 @@ public class Login extends AppCompatActivity {
 
     }
 
+    public void sendPost(String email, String password) {
+
+        fs.findUser(email, password).enqueue(new Callback<PostLogin>() {
+            @Override
+            public void onResponse(Call<PostLogin> call, Response<PostLogin> response) {
+
+                Log.i("TAG", "CHECK!!!!");
+                if(response.isSuccessful()) {
+                    Log.i("TAG", "FIND USER post submitted to API." + response.body().toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PostLogin> call, Throwable t) {
+                Log.e("TAG", "Unable to submit post to API.");
+            }
+        });
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -191,10 +214,6 @@ public class Login extends AppCompatActivity {
         });
         final AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
-    }
-
-    public void testToast(String str) {
-        Toast.makeText(getApplicationContext(), str, Toast.LENGTH_LONG).show();
     }
 
 }

@@ -1,19 +1,19 @@
-package com.example.olivia_fabian.json;
+package com.example.olivia_fabian.pojo;
 
 public class User {
-    private String username;
+    private String name;
     private String email;
     private String password;
 
 
     public User(String username, String email, String password) {
-        this.username = username;
+        this.name = username;
         this.email = email;
         this.password = password;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
     public String getEmail() {

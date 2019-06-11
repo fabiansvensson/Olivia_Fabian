@@ -1,30 +1,18 @@
 package com.example.olivia_fabian;
 
-import android.bluetooth.BluetoothClass;
-import android.content.Intent;
 import android.widget.ArrayAdapter;
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.olivia_fabian.api.RetroFlats;
+import com.example.olivia_fabian.activities.FlatsScreen;
 import com.squareup.picasso.Picasso;
 
 import java.util.LinkedList;
 import java.util.List;
-
-import retrofit2.Callback;
-
-import static com.example.olivia_fabian.R.drawable.logo;
-import static com.example.olivia_fabian.R.layout.flats;
 
 public class FlatsAdapter extends ArrayAdapter<Flat> {
     int layout=-1;
