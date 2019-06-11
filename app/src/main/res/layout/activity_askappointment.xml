@@ -63,9 +63,11 @@
 
             />
         <EditText
-            android:id="@+id/et_mostrar_fecha_picker"
+            android:id="@+id/tv_mostrar_fecha_picker"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:focusableInTouchMode="false"
             android:ems="10"
             android:inputType="date"
             android:hint="@string/formato_fecha"
@@ -80,7 +82,7 @@
             android:textSize="20dp"
             android:text="@string/hour"
             android:layout_height="wrap_content"
-            android:layout_below="@id/et_mostrar_fecha_picker"
+            android:layout_below="@id/tv_mostrar_fecha_picker"
             android:paddingTop="30dp"/>
 
         <Spinner
@@ -97,7 +99,7 @@
             android:layout_height="30dp"
             android:layout_marginLeft="10dp"
             android:background="@drawable/cal"
-            android:layout_toRightOf="@id/et_mostrar_fecha_picker"
+            android:layout_toRightOf="@id/tv_mostrar_fecha_picker"
             android:layout_below="@id/date"
             />
         <Button

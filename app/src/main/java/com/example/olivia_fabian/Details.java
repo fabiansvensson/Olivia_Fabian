@@ -22,8 +22,8 @@ public class Details extends AppCompatActivity {
     private boolean like;
     private String size;
     private Button appointment;
-    private String time;
-    private String date;
+    private String time = null;
+    private String date = null;
     private Button like_button;
 
     @SuppressLint("WrongViewCast")
@@ -38,6 +38,8 @@ public class Details extends AppCompatActivity {
         like = intent.getBooleanExtra("LIKE", false);
         size = intent.getStringExtra("SIZE");
         image_api = intent.getStringExtra("IMAGE_API");
+        date = intent.getStringExtra("DATE");
+        time = intent.getStringExtra("TIME");
 
         Log.d("PRICE", "this is the price: " + price);
         Log.d("DESCRIPTION", "this is the description: " + description);

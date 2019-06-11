@@ -7,7 +7,25 @@ public class Flat {
     private int img;
     private boolean like;
     private String img_api;
+    private String date;
+    private String time;
 
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
 
     public Flat(float price, String short_description, int size, int img, boolean like, String img_api) {
         this.price = price;
@@ -16,6 +34,8 @@ public class Flat {
         this.img = img;
         this.like = like;
         this.img_api = img_api;
+        this.date = null;
+        this.time = null;
     }
 
 

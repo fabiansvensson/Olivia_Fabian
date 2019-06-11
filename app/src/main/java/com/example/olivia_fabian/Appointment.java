@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -19,8 +20,8 @@ import java.util.Locale;
 
 public class Appointment extends AppCompatActivity {
 
-    private EditText edittext;
     private Calendar myCalendar;
+    private EditText et;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -28,10 +29,10 @@ public class Appointment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_askappointment);
 
-
         myCalendar = Calendar.getInstance();
 
-        edittext = (EditText) findViewById(R.id.et_mostrar_fecha_picker);
+        et = findViewById(R.id.tv_mostrar_fecha_picker);
+
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
             @Override
@@ -46,8 +47,7 @@ public class Appointment extends AppCompatActivity {
 
         };
 
-        edittext.setOnClickListener(new View.OnClickListener() {
-
+        et.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new DatePickerDialog(Appointment.this, date, myCalendar
@@ -55,7 +55,6 @@ public class Appointment extends AppCompatActivity {
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
-
 
         final Spinner dropdown = findViewById(R.id.spinner_time);
 
@@ -79,7 +78,7 @@ public class Appointment extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.putExtra("TIME", (String)dropdown.getSelectedItem());
-                intent.putExtra("DATE", edittext.getText().toString());
+                intent.putExtra("DATE", et.getText().toString());
                 setResult(RESULT_OK, intent);
                 finish();
             }
@@ -91,7 +90,7 @@ public class Appointment extends AppCompatActivity {
         String myFormat = "MM/dd/yy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
-        edittext.setText(sdf.format(myCalendar.getTime()));
+        et.setText(sdf.format(myCalendar.getTime()));
     }
 
 }

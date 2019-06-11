@@ -71,7 +71,8 @@ public class FlatsScreen extends AppCompatActivity {
         intent.putExtra("LIKE", flat.getLike());
         intent.putExtra("SIZE", flat.getSize());
         intent.putExtra("IMAGE_API", flat.getImg_api());
-
+        intent.putExtra("DATE", flat.getDate());
+        intent.putExtra("TIME", flat.getTime());
 
         startActivityForResult(intent,1);
     }
