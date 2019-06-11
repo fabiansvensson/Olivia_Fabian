@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.olivia_fabian.api.RetroFlats;
 import com.example.olivia_fabian.api.RetrofitClientInstance;
@@ -94,11 +95,10 @@ public class FlatsScreen extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<RetroFlats>> call, Throwable t) {
-
+                Log.d("FAIL", "FAILURE HAS OCCURED!");
+                Toast.makeText(getApplicationContext(), "FAIL!", Toast.LENGTH_LONG).show();
             }
         });
-
-        //flats.size();
 
     }
 

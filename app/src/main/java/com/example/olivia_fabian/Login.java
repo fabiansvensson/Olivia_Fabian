@@ -35,6 +35,7 @@ public class Login extends AppCompatActivity {
     TextView register;
     List<User> users = null;
     private User checkUser;
+    private boolean userFound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,11 +68,16 @@ public class Login extends AppCompatActivity {
                     ReadJson rj = new ReadJson();
                     users = rj.loadData(getFilesDir().toString());
                     Log.d("TAG", "MESSAGE HAS BEEN SENT LOOK HERE!");
+                    userFound = false;
                     for(User u : users) {
                         Log.d("TAG", u.getUsername());
                         if(u.equals(checkUser)) {
                             intentCreate(true);
+                            userFound = true;
                         }
+                    }
+                    if(!userFound) {
+                        dialogFaultyInput();
                     }
                 }
             }
@@ -128,9 +134,8 @@ public class Login extends AppCompatActivity {
 
     public void dialogPassword() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Login.this);
-        alertDialogBuilder.setTitle("Password Incorrect");
-        alertDialogBuilder.setMessage("Error password field cannot be empty and must contain\n" +
-                "at least one number, one lowercase and one uppercase letter").setCancelable(true);
+        alertDialogBuilder.setTitle("Password Format");
+        alertDialogBuilder.setMessage("Error password field cannot be empty").setCancelable(true);
         alertDialogBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialog, int which){
@@ -149,9 +154,30 @@ public class Login extends AppCompatActivity {
 
     public void dialogEmail() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Login.this);
-        alertDialogBuilder.setTitle("Email Incorrect");
+        alertDialogBuilder.setTitle("Email Format");
         alertDialogBuilder.setMessage("Error email needs to be set and \n" +
                 "have a valid expression").setCancelable(true);
+        alertDialogBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which){
+                dialog.cancel();
+            }
+        });
+        alertDialogBuilder.setNegativeButton("Close", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which){
+                dialog.cancel();
+            }
+        });
+        final AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
+    public void dialogFaultyInput() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Login.this);
+        alertDialogBuilder.setTitle("Incorrect password or email");
+        alertDialogBuilder.setMessage("Error! Either the password or the email that you" +
+                "have inputted do not correspond to any user!").setCancelable(true);
         alertDialogBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialog, int which){
