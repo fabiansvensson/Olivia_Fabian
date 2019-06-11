@@ -59,7 +59,6 @@ public class Login extends AppCompatActivity {
                 } else {
                     checkUser = new User("tester", email.getText().toString(), password.getText().toString());
                 }
-
                 if(!checkEmail()) {
                     dialogEmail();
                 } else if(!passOk()) {

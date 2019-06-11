@@ -6,16 +6,26 @@ public class Flat {
     private int size;
     private int img;
     private boolean like;
+    private String img_api;
 
 
-    public Flat(float price, String short_description, int size, int img, boolean like) {
+    public Flat(float price, String short_description, int size, int img, boolean like, String img_api) {
         this.price = price;
         this.short_description = short_description;
         this.size = size;
         this.img = img;
         this.like = like;
+        this.img_api = img_api;
     }
 
+
+    public String getImg_api() {
+        return img_api;
+    }
+
+    public void setImg_api(String img_api) {
+        this.img_api = img_api;
+    }
 
     public String getPrice() {
         return (Float.toString(price)) + "€";

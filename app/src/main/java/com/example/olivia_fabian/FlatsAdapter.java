@@ -23,6 +23,9 @@ import java.util.List;
 
 import retrofit2.Callback;
 
+import static com.example.olivia_fabian.R.drawable.logo;
+import static com.example.olivia_fabian.R.layout.flats;
+
 public class FlatsAdapter extends ArrayAdapter<Flat> {
     int layout=-1;
     private Flat flat;
@@ -32,7 +35,7 @@ public class FlatsAdapter extends ArrayAdapter<Flat> {
     public FlatsAdapter(Context context, List<Flat> collection, FlatsScreen main) {
         super(context, R.layout.flats, collection);
         this.layout= R.layout.flats;
-        this.main = (FlatsScreen) main;
+        this.main =  main;
     }
 
     @Override
@@ -51,16 +54,19 @@ public class FlatsAdapter extends ArrayAdapter<Flat> {
             f_description.setText(flat.getDescription());
 
 
-            ImageView f_logo = (ImageView) row.findViewById(R.id.flatpicture);
+           ImageView f_logo = (ImageView) row.findViewById(R.id.flatpicture);
            // if(flat.getLike() != false) {
              // ImageView f_favourtite = (ImageView) row.findViewById(R.id.likeicon);
             //}
-
-            Picasso.get()
-                    .load(flat.getImg())
-                    .into(f_logo);
-
-
+            if(flat.getImg_api() == null || flat.getImg_api().isEmpty())  {
+                Picasso.get()
+                        .load(flat.getImg())
+                        .into(f_logo);
+            } else{
+                Picasso.get()
+                        .load(flat.getImg_api())
+                        .into(f_logo);
+            }
             TextView f_size = (TextView) row.findViewById(R.id.size);
             f_size.setText(flat.getSize());
 

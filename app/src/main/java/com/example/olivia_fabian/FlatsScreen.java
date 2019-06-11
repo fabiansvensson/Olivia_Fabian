@@ -46,7 +46,7 @@ public class FlatsScreen extends AppCompatActivity {
 
         adapter = new FlatsAdapter(getApplicationContext(), flats_n, this);
 
-        lv = (ListView) findViewById(R.id.listview);
+        lv = findViewById(R.id.listview);
         lv.setAdapter(adapter);
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -67,6 +67,8 @@ public class FlatsScreen extends AppCompatActivity {
         intent.putExtra("IMAGE", flat.getImg());
         intent.putExtra("LIKE", flat.getLike());
         intent.putExtra("SIZE", flat.getSize());
+        intent.putExtra("IMAGE_API", flat.getImg_api());
+
 
         startActivity(intent);
     }
@@ -85,8 +87,8 @@ public class FlatsScreen extends AppCompatActivity {
                 for(RetroFlats rf : flats) {
                     Log.d("TAG", rf.getShortdescription());
                 }
-                for (RetroFlats rf: flats) {
-                    Flat f = new Flat(rf.getPrice(), rf.getShortdescription(), 5, R.drawable.logo, false);
+               for (RetroFlats rf: flats) {
+                   Flat f = new Flat(rf.getPrice(), rf.getShortdescription(), 5, R.drawable.logo, false, rf.getImage());
                     flats_n.add(f);
                 }
                 adapter.notifyDataSetChanged();

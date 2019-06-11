@@ -10,15 +10,19 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 
 public class Details extends AppCompatActivity {
 
     private String price;
     private String description;
     private int image;
-    private int like;
+    private String image_api;
+    private boolean like;
     private String size;
     private Button appointment;
+    private Button like_button;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -29,27 +33,70 @@ public class Details extends AppCompatActivity {
         Intent intent = getIntent();
         price = intent.getStringExtra("PRICE");
         description = intent.getStringExtra("DESCRIPTION");
-        image = intent.getIntExtra("IMAGE", 0);
-        like = intent.getIntExtra("LIKE", 0);
+        like = intent.getBooleanExtra("LIKE", false);
         size = intent.getStringExtra("SIZE");
+        image_api = intent.getStringExtra("IMAGE_API");
 
         Log.d("PRICE", "this is the price: " + price);
         Log.d("DESCRIPTION", "this is the description: " + description);
-        Log.d("IMAGE", "this is the image: " + image);
+        Log.d("IMAGE_API", "this is the image: " + image_api);
         Log.d("LIKE", "this is the like: " + like);
         Log.d("SIZE", "this is the size: " + size);
 
         TextView vshortdesc = findViewById(R.id.shortdescription);
         ImageView vflat_img = findViewById(R.id.logoflat2);
+
+
+        if(image_api == null || image_api.isEmpty())  {
+            Picasso.get()
+                    .load(R.drawable.logo)
+                    .into(vflat_img);
+        } else{
+            Picasso.get()
+                    .load(image_api)
+                    .into(vflat_img);
+        }
         TextView vsize = findViewById(R.id.sizenumberdetails);
         TextView vprice = findViewById(R.id.prizedetails2);
         TextView vlongdesc = findViewById(R.id.longdescription);
-
+        ImageView vlike = findViewById(R.id.likedescription);
+        if(like == false) {
+            Picasso.get()
+                    .load(R.drawable.transparent)
+                    .into(vlike);
+        } else{
+            Picasso.get()
+                    .load(R.drawable.like)
+                    .into(vlike);
+        }
         vshortdesc.setText(description);
-        vflat_img.setImageResource(image);
         vsize.setText(size);
         vprice.setText(price);
         vlongdesc.setText("We need to pass this still!");
+
+        like_button = findViewById(R.id.setfavourite);
+        like_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ImageView vlike = findViewById(R.id.likedescription);
+
+                if(like == false) {
+                    like = true;
+                    Picasso.get()
+                            .load(R.drawable.like)
+                            .into(vlike);
+                    like_button.setText("REMOVE AS FAVOURITE");
+                } else{
+                    like = false;
+                    Picasso.get()
+                            .load(R.drawable.transparent)
+                            .into(vlike);
+                    like_button.setText("SET AS FAVOURITE");
+                }
+
+            }
+        });
 
         appointment = findViewById(R.id.askappointment);
         appointment.setOnClickListener(new View.OnClickListener() {
