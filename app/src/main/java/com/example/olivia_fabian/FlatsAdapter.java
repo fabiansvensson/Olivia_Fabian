@@ -55,9 +55,17 @@ public class FlatsAdapter extends ArrayAdapter<Flat> {
 
 
            ImageView f_logo = (ImageView) row.findViewById(R.id.flatpicture);
-           // if(flat.getLike() != false) {
-             // ImageView f_favourtite = (ImageView) row.findViewById(R.id.likeicon);
-            //}
+           ImageView f_favourtite = (ImageView) row.findViewById(R.id.likeicon);
+           if (flat.getLike() == true) {
+               Picasso.get()
+                       .load(R.drawable.like)
+                       .into(f_favourtite);
+           } else {
+               Picasso.get()
+                       .load(R.drawable.transparent)
+                       .into(f_favourtite);
+           }
+
             if(flat.getImg_api() == null || flat.getImg_api().isEmpty())  {
                 Picasso.get()
                         .load(flat.getImg())

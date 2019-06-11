@@ -7,6 +7,7 @@ public class Flat {
     private int img;
     private boolean like;
     private String img_api;
+    private int id;
     private String date;
     private String time;
 
@@ -27,17 +28,21 @@ public class Flat {
         this.time = time;
     }
 
-    public Flat(float price, String short_description, int size, int img, boolean like, String img_api) {
+    public Flat(float price, String short_description, int size, int img, boolean like, String img_api, int id) {
         this.price = price;
         this.short_description = short_description;
         this.size = size;
         this.img = img;
         this.like = like;
         this.img_api = img_api;
+        this.id = id;
         this.date = null;
         this.time = null;
     }
 
+    public int getId() {
+        return id;
+    }
 
     public String getImg_api() {
         return img_api;

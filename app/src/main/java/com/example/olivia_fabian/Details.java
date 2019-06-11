@@ -25,6 +25,7 @@ public class Details extends AppCompatActivity {
     private String time = null;
     private String date = null;
     private Button like_button;
+    private int id;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -38,6 +39,7 @@ public class Details extends AppCompatActivity {
         like = intent.getBooleanExtra("LIKE", false);
         size = intent.getStringExtra("SIZE");
         image_api = intent.getStringExtra("IMAGE_API");
+        id = intent.getIntExtra("FLAT_ID", 0);
         date = intent.getStringExtra("DATE");
         time = intent.getStringExtra("TIME");
 
@@ -64,22 +66,27 @@ public class Details extends AppCompatActivity {
         TextView vprice = findViewById(R.id.prizedetails2);
         TextView vlongdesc = findViewById(R.id.longdescription);
         ImageView vlike = findViewById(R.id.likedescription);
+        like_button = findViewById(R.id.setfavourite);
+
         if(like == false) {
             Picasso.get()
                     .load(R.drawable.transparent)
                     .into(vlike);
+            like_button.setText("SET AS FAVOURITE");
+
+
         } else{
             Picasso.get()
                     .load(R.drawable.like)
                     .into(vlike);
+            like_button.setText("REMOVE AS FAVOURITE");
+
         }
         vshortdesc.setText(description);
-        vflat_img.setImageResource(image);
         vsize.setText(size);
         vprice.setText(price);
         vlongdesc.setText("We need to pass this still!");
 
-        like_button = findViewById(R.id.setfavourite);
         like_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,6 +126,13 @@ public class Details extends AppCompatActivity {
             if(resultCode == RESULT_OK) {
                 time = data.getStringExtra("TIME");
                 date = data.getStringExtra("DATE");
+                id = data.getIntExtra("ID", 0);
+                like = data.getBooleanExtra("LIKE", false);
+                if(like == false) {
+                    like_button.setText("SET AS FAVOURITE");
+                } else{
+                    like_button.setText("REMOVE AS FAVOURITE");
+                }
                 TextView tv = findViewById(R.id.dateandtime);
                 tv.setText("Tienes una cita el " + date + "a las " + time);
                 tv.setVisibility(View.VISIBLE);
@@ -137,6 +151,8 @@ public class Details extends AppCompatActivity {
         Intent intent = new Intent();
         intent.putExtra("TIME", time);
         intent.putExtra("DATE", date);
+        intent.putExtra("ID", id);
+        intent.putExtra("LIKE", like);
         setResult(RESULT_OK, intent);
         super.onBackPressed();
     }

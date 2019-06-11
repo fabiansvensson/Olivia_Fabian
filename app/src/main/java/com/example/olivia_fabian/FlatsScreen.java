@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -35,16 +36,19 @@ public class FlatsScreen extends AppCompatActivity {
     private FlatsAdapter adapter;
     private String time;
     private String date;
-
+    private boolean like;
+    private int id;
+    private Button e, c, f;
 
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent = getIntent();
+
         flats_n = new LinkedList<Flat>();
         setContentView(R.layout.activity_flats);
         activityMain = findViewById(R.id.flatpicture);
-
         makeCallToApi(this);
 
         adapter = new FlatsAdapter(getApplicationContext(), flats_n, this);
@@ -71,6 +75,8 @@ public class FlatsScreen extends AppCompatActivity {
         intent.putExtra("LIKE", flat.getLike());
         intent.putExtra("SIZE", flat.getSize());
         intent.putExtra("IMAGE_API", flat.getImg_api());
+        intent.putExtra("FLAT_ID", flat.getId());
+
         intent.putExtra("DATE", flat.getDate());
         intent.putExtra("TIME", flat.getTime());
 
@@ -83,8 +89,14 @@ public class FlatsScreen extends AppCompatActivity {
             if(resultCode == RESULT_OK) {
                 time = data.getStringExtra("TIME");
                 date = data.getStringExtra("DATE");
+                like = data.getBooleanExtra("LIKE", false);
+                id = data.getIntExtra("ID", 0);
                 Log.d("STRING TIME", "CHECK HERE IS THE TIME IN THE FLATSCREEN: " + time);
                 Log.d("DATE TIME", "CHECK HERE IS THE DATE IN THE FLATSCREEN: " + date);
+                Log.d("FLAT LIKE", "CHECK HERE IS THE LIKE IN THE FLATSCREEN: " + like);
+                Log.d("FLAT ID", "CHECK HERE IS THE ID IN THE FLATSCREEN: " + id);
+                flats_n.get(id).setLike(like);
+                adapter.notifyDataSetChanged();
             }
         }
     }
@@ -103,9 +115,11 @@ public class FlatsScreen extends AppCompatActivity {
                 for(RetroFlats rf : flats) {
                     Log.d("TAG", rf.getShortdescription());
                 }
+                int j = 0;
                for (RetroFlats rf: flats) {
-                   Flat f = new Flat(rf.getPrice(), rf.getShortdescription(), 5, R.drawable.logo, false, rf.getImage());
+                   Flat f = new Flat(rf.getPrice(), rf.getShortdescription(), 5, R.drawable.logo, false, rf.getImage(), j);
                     flats_n.add(f);
+                    j++;
                 }
                 adapter.notifyDataSetChanged();
 
